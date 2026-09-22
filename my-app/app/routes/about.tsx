@@ -1,3 +1,4 @@
+import AboutPage from "~/about/aboutPage";
 import type { Route } from "./+types/about";
 
 export function meta({}: Route.MetaArgs) {
@@ -8,5 +9,5 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function About() {
-  return <h1>About page</h1>;
+  return <AboutPage />;
 }
