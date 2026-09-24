@@ -10,7 +10,9 @@ export type CountriesResponse = {
   data: Record<string, CountryDetails>;
 };
 
-export async function publicApi(signal?: AbortSignal): Promise<CountriesResponse> {
+export async function publicApi(
+  signal?: AbortSignal,
+): Promise<CountriesResponse> {
   const response = await fetch("https://api.first.org/data/v1/countries", {
     signal,
   });
@@ -20,4 +22,16 @@ export async function publicApi(signal?: AbortSignal): Promise<CountriesResponse
   }
 
   return response.json() as Promise<CountriesResponse>;
+}
+
+export async function getBlog(postid: number) {
+  const response = await fetch(
+    `https://jsonplaceholder.typicode.com/posts/${postid}`,
+  );
+
+  if (!response.ok) {
+    throw new Error("Countries request failed: " + response.status);
+  }
+
+  return response.json();
 }
