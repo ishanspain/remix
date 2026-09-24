@@ -6,10 +6,10 @@ import {
 } from "@react-router/dev/routes";
 
 export default [
-  index("home/homePage.tsx"),
-  route("about", "about/aboutPage.tsx"),
-  layout("./auth/layout.tsx", [
-    route("login", "./auth/login.tsx"),
-    route("register", "./auth/register.tsx"),
+  index("pages/home/homePage.tsx"),
+  route("about", "pages/about/aboutPage.tsx"),
+  layout("./pages/auth/layout.tsx", [
+    route("login", "./pages/auth/login.tsx"),
+    route("register", "./pages/auth/register.tsx"),
   ]),
 ] satisfies RouteConfig;
