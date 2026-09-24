@@ -12,4 +12,5 @@ export default [
     route("login", "./pages/auth/login.tsx"),
     route("register", "./pages/auth/register.tsx"),
   ]),
+    route("country", "pages/country/Country.tsx"),
 ] satisfies RouteConfig;
