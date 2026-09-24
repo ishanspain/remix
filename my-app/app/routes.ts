@@ -12,5 +12,7 @@ export default [
     route("login", "./pages/auth/login.tsx"),
     route("register", "./pages/auth/register.tsx"),
   ]),
-    route("country", "pages/country/Country.tsx"),
+  route("country", "pages/country/Country.tsx"),
+  route("blogs/", "./pages/blogs/blogs.tsx"),
+  route("blogs/:blogId", "./pages/blogs/blog/blog.tsx"),
 ] satisfies RouteConfig;
