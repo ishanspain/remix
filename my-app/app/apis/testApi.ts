@@ -24,14 +24,21 @@ export async function publicApi(
   return response.json() as Promise<CountriesResponse>;
 }
 
-export async function getBlog(postid: number) {
+export type Blog = {
+  id: number;
+  userId: number;
+  title: string;
+  body: string;
+};
+
+export async function getBlog(postId: number): Promise<Blog> {
   const response = await fetch(
-    `https://jsonplaceholder.typicode.com/posts/${postid}`,
+    `https://jsonplaceholder.typicode.com/posts/${postId}`,
   );
 
   if (!response.ok) {
-    throw new Error("Countries request failed: " + response.status);
+    throw new Error("Blog request failed: " + response.status);
   }
 
-  return response.json();
+  return response.json() as Promise<Blog>;
 }

@@ -3,12 +3,29 @@ import type { Route } from "./+types/blog";
 import { Link, redirect } from "react-router";
 import { getBlog } from "~/apis/testApi";
 
-export default function blog({ params }: Route.ComponentProps) {
+
+// client loader function
+export async function clientLoader({ params, context }: Route.ClientLoaderArgs) {
+  const blogId = Number(params.blogId);
+
+  console.log("context from the blog client loader", context)
+
+  if (!Number.isInteger(blogId) || blogId <= 0) {
+    throw redirect("/blogs");
+  }
+
+  return getBlog(blogId);
+}
+
+export default function blog({
+  loaderData: blog,
+  params,
+}: Route.ComponentProps) {
   const { blogId } = params;
 
-  const [blog, setblog] = useState(null);
+  //   const [blog, setblog] = useState(null);
 
-  useEffect(() => {
+  /* useEffect(() => {
     (async () => {
       try {
         const data = await getBlog(Number(blogId));
@@ -17,7 +34,7 @@ export default function blog({ params }: Route.ComponentProps) {
         console.log("err fetching post data", err);
       }
     })();
-  }, []);
+  }, []); */
 
   return (
     <div>
@@ -44,7 +61,7 @@ export default function blog({ params }: Route.ComponentProps) {
   );
 }
 
-const blogMiddleware: Route.ClientMiddlewareFunction = async (
+/* const blogMiddleware: Route.ClientMiddlewareFunction = async (
   { request, params, context },
   next,
 ) => {
@@ -60,4 +77,4 @@ const blogMiddleware: Route.ClientMiddlewareFunction = async (
 
 export const clientMiddleware: Route.ClientMiddlewareFunction[] = [
   blogMiddleware,
-];
+]; */

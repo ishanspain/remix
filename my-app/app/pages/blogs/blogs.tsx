@@ -22,23 +22,16 @@ export default function blogs() {
 }
 
 
-  const blogsMiddleware: Route.ClientMiddlewareFunction = async (
+/*   const blogsMiddleware: Route.ClientMiddlewareFunction = async (
   { request , context},
   next,
 ) => {
-  const startedAt = performance.now();
-
- /*  console.log(
-    `${new Date().toISOString()} ${request.method} ${request.url}`,
-  ); */
 
   console.log("blogs context in middleare", context)
 
   try {
     await next();
   } finally {
-    const duration = performance.now() - startedAt;
-
     console.log(
       `${new Date().toISOString()} completed in ${duration.toFixed(2)}ms`,
     );
@@ -47,4 +40,4 @@ export default function blogs() {
 
 export const clientMiddleware: Route.ClientMiddlewareFunction[] = [
   blogsMiddleware,
-];
+]; */
