@@ -14,5 +14,6 @@ export default [
   ]),
   route("country", "pages/country/Country.tsx"),
   route("blogs/", "./pages/blogs/blogs.tsx"),
-  route("blogs/:blogId", "./pages/blogs/blog/blog.tsx"),
+  route("blog/:blogId", "./pages/blogs/blog/blog.tsx"),
+  route("blog/:blogId/:commentId", "./pages/blogs/blog/comment/comment.tsx"),
 ] satisfies RouteConfig;
