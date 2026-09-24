@@ -1,5 +1,7 @@
 import React from 'react'
 import { Outlet } from 'react-router';
+import type { Route } from "./+types/layout";
+import { authMiddleware } from '~/middleware/authMiddleware';
 
 export default function AuthLayout() {
   return (
@@ -9,3 +11,7 @@ export default function AuthLayout() {
     </div>
   )
 }
+
+export const clientMiddleware: Route.ClientMiddlewareFunction[] = [
+  authMiddleware,
+];
