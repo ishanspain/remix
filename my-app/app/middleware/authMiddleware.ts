@@ -8,7 +8,7 @@ type ClientMiddleware = MiddlewareFunction<
   Record<string, DataStrategyResult>
 >;
 
-export const authMiddleware: ClientMiddleware = async () => {
+export const authMiddleware: ClientMiddleware = async (args, next) => {
   const isLoggedIn = true; 
 
  /*  if (!isLoggedIn) {

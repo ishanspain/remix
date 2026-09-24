@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import type { Route } from "./+types/blog";
-import { Link } from "react-router";
+import { Link, redirect } from "react-router";
 import { getBlog } from "~/apis/testApi";
 
 export default function blog({ params }: Route.ComponentProps) {
@@ -38,8 +38,26 @@ export default function blog({ params }: Route.ComponentProps) {
       <Link to="/blog/1/one">comment 1</Link>
       <br />
       <Link to="/blog/1/two">comment 2</Link>
-<br />
+      <br />
       <Link to="/blogs">GO back to blogs</Link>
     </div>
   );
 }
+
+const blogMiddleware: Route.ClientMiddlewareFunction = async (
+  { request, params, context },
+  next,
+) => {
+  console.log("blog params in middleare", params);
+  const { blogId } = params;
+
+  const id = Number(params.blogId);
+
+  if (!Number.isInteger(id) || id <= 0) {
+    throw redirect("/blogs");
+  }
+};
+
+export const clientMiddleware: Route.ClientMiddlewareFunction[] = [
+  blogMiddleware,
+];
