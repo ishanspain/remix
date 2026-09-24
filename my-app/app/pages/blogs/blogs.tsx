@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router";
+import type { Route } from "./+types/blogs";
 
 export default function blogs() {
+  useEffect(() => {
+    console.log("logged from blogs page");
+  });
+
   return (
     <div>
       <h1>This is blog page</h1>
@@ -15,3 +20,31 @@ export default function blogs() {
     </div>
   );
 }
+
+
+  const blogsMiddleware: Route.ClientMiddlewareFunction = async (
+  { request , context},
+  next,
+) => {
+  const startedAt = performance.now();
+
+ /*  console.log(
+    `${new Date().toISOString()} ${request.method} ${request.url}`,
+  ); */
+
+  console.log("blogs context in middleare", context)
+
+  try {
+    await next();
+  } finally {
+    const duration = performance.now() - startedAt;
+
+    console.log(
+      `${new Date().toISOString()} completed in ${duration.toFixed(2)}ms`,
+    );
+  }
+};
+
+export const clientMiddleware: Route.ClientMiddlewareFunction[] = [
+  blogsMiddleware,
+];

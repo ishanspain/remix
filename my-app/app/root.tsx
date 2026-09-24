@@ -9,6 +9,7 @@ import {
 
 // import type { Route } from "./+types/root";
 import "./app.css";
+import type { Route } from "./+types/root";
 
 /* export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -73,3 +74,31 @@ export default function App() {
     </main>
   );
 } */
+
+
+  const loggingMiddleware: Route.ClientMiddlewareFunction = async (
+  { request },
+  next,
+) => {
+  const startedAt = performance.now();
+
+ /*  console.log(
+    `${new Date().toISOString()} ${request.method} ${request.url}`,
+  ); */
+
+  console.log("req middleware in client", request)
+
+  try {
+    await next();
+  } finally {
+    const duration = performance.now() - startedAt;
+
+    console.log(
+      `${new Date().toISOString()} completed in ${duration.toFixed(2)}ms`,
+    );
+  }
+};
+
+export const clientMiddleware: Route.ClientMiddlewareFunction[] = [
+  loggingMiddleware,
+];
