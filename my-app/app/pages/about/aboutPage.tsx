@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router";
 import type { Route } from "./+types/aboutPage";
+import aboutStylesheet from "./about.css?url";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -13,12 +14,7 @@ export function links() {
   return [
     {
       rel: "stylesheet",
-      href: "./about.css",
-    },
-    {
-      rel: "preload",
-      href: "/images/banner.jpg",
-      as: "image",
+      href: aboutStylesheet,
     },
   ];
 }
