@@ -1,6 +1,6 @@
 // route('/projects/:projectId', './project.tsx')
 import type { Route } from "./+types/contact";
-import { Form, Link } from "react-router";
+import { Form, Link, NavLink } from "react-router";
 
 export async function clientAction({ request }: Route.ClientActionArgs) {
   let formData = await request.formData();
@@ -23,7 +23,9 @@ export default function Contact({ actionData }: Route.ComponentProps) {
       <br />
       <Link to="/contact2">GO to Contact 2</Link>
       <br />
-      <Link to="/">GO to home</Link>
+      <NavLink to="/" end>
+        Home
+      </NavLink>
     </div>
   );
 }

@@ -1,13 +1,9 @@
 import React, { useEffect } from "react";
-import { Link, useNavigation } from "react-router";
+import { Link, NavLink, useNavigation } from "react-router";
 import type { Route } from "./+types/blogs";
 
-
 export function meta({}: Route.MetaArgs) {
-  return [
-    { title: "blogs" },
-    { name: "description", content: "blogs" },
-  ];
+  return [{ title: "blogs" }, { name: "description", content: "blogs" }];
 }
 
 export default function blogs() {
@@ -31,7 +27,9 @@ export default function blogs() {
       <Link to="/blog/3">Blog 3</Link>
 
       <h3>Click below to navigate home page</h3>
-      <Link to="/">GO to HOme</Link>
+      <NavLink to="/" end>
+        Home
+      </NavLink>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router";
+import { Form, Link, NavLink } from "react-router";
 import type { Route } from "./+types/homePage";
 
 export function meta({}: Route.MetaArgs) {
@@ -17,11 +17,19 @@ export default function HomePage() {
         <NavLink to="/about" end>
           About
         </NavLink>
+        <br />
         <NavLink to="/country" end>
           Country
         </NavLink>
+        <br />
         <NavLink to="/blogs">Blogs</NavLink>
+        <br />
         <NavLink to="/contact">Contact</NavLink>
+
+        {/* form can be used to navigate too */}
+        <Form action="/search">
+          <input type="text" name="q" />
+        </Form>
       </nav>
     </main>
   );
