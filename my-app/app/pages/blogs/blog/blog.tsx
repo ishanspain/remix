@@ -4,6 +4,10 @@ import { Link, redirect } from "react-router";
 import { getBlog } from "~/apis/testApi";
 
 
+export function HydrateFallback() {
+  return <p>Loading blog via hydration...</p>;
+}
+
 // client loader function
 export async function clientLoader({ params, context }: Route.ClientLoaderArgs) {
   const blogId = Number(params.blogId);
