@@ -28,6 +28,14 @@ export async function clientLoader({
   return getBlog(blogId);
 }
 
+export function meta({ params }: Route.MetaArgs) {
+  const { blogId } = params;
+  return [
+    { title: `blog ${blogId}` },
+    { name: blogId, content: `this is blog ${blogId}` },
+  ];
+}
+
 export default function blog({
   loaderData: blog,
   params,

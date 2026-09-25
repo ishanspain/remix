@@ -2,6 +2,14 @@ import React, { useEffect } from "react";
 import { Link, useNavigation } from "react-router";
 import type { Route } from "./+types/blogs";
 
+
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: "blogs" },
+    { name: "description", content: "blogs" },
+  ];
+}
+
 export default function blogs() {
   const navigation = useNavigation();
   const loadingBlog =
