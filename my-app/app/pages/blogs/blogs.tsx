@@ -34,22 +34,22 @@ export default function blogs() {
   );
 }
 
-/*   const blogsMiddleware: Route.ClientMiddlewareFunction = async (
-  { request , context},
+const blogsMiddleware: Route.ClientMiddlewareFunction = async (
+  { request, context },
   next,
 ) => {
-
-  console.log("blogs context in middleare", context)
-
+  console.log("blogs context in middleare", context);
+  await new Promise<void>((resolve) => {
+    setTimeout(resolve, 3000);
+  });
+  
   try {
     await next();
   } finally {
-    console.log(
-      `${new Date().toISOString()} completed in ${duration.toFixed(2)}ms`,
-    );
+    console.log(`blogs middleware ${new Date().toISOString()} completed`);
   }
 };
 
 export const clientMiddleware: Route.ClientMiddlewareFunction[] = [
   blogsMiddleware,
-]; */
+];

@@ -22,7 +22,10 @@ export default function HomePage() {
           Country
         </NavLink>
         <br />
-        <NavLink to="/blogs">Blogs</NavLink>
+        {/* <NavLink to="/blogs">Blogs</NavLink> */}
+        <NavLink to="/blogs">
+          {({ isPending }) => <span>blogs {isPending && <p>Loading blogs via navlink</p>}</span>}
+        </NavLink>
         <br />
         <NavLink to="/contact">Contact</NavLink>
 
