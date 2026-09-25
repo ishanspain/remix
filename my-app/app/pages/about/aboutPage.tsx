@@ -9,6 +9,20 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
+export function links() {
+  return [
+    {
+      rel: "stylesheet",
+      href: "./about.css",
+    },
+    {
+      rel: "preload",
+      href: "/images/banner.jpg",
+      as: "image",
+    },
+  ];
+}
+
 export default function AboutPage() {
   return (
     <main>

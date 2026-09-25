@@ -1,15 +1,22 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router";
+import { Link, useNavigation } from "react-router";
 import type { Route } from "./+types/blogs";
 
 export default function blogs() {
+  const navigation = useNavigation();
+  const loadingBlog =
+    navigation.state === "loading" &&
+    navigation.location?.pathname.startsWith("/blog/");
+
   useEffect(() => {
-    console.log("logged from blogs page");
+    console.log("logged from blogs page", navigation);
   });
 
   return (
     <div>
       <h1>This is blog page</h1>
+
+      {loadingBlog && <p>Loading selected blog...</p>}
 
       <Link to="/blog/1">Blog 1</Link>
       <Link to="/blog/2">Blog 2</Link>
@@ -20,7 +27,6 @@ export default function blogs() {
     </div>
   );
 }
-
 
 /*   const blogsMiddleware: Route.ClientMiddlewareFunction = async (
   { request , context},
