@@ -15,8 +15,10 @@ export default function HomePage() {
       <Link to="/about">Go to About</Link>
       <br />
       <Link to="/country">GO to country</Link>
-       <br />
+      <br />
       <Link to="/blogs">GO to blogs</Link>
+      <br />
+      <Link to="/contact">GO to contact</Link>
     </main>
   );
 }

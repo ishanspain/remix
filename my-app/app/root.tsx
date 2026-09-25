@@ -92,7 +92,7 @@ export default function App() {
     `${new Date().toISOString()} ${request.method} ${request.url}`,
   ); */
 
-  console.log("req middleware in client", request)
+  console.log("req middleware in root", request)
 
   try {
     await next();
