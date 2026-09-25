@@ -42,6 +42,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
+export function HydrateFallback() {
+  console.log("running root hydration");
+  return <p>Loading application...</p>;
+}
+
+
 export default function App() {
   return <Outlet />;
 }

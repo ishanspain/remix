@@ -3,16 +3,23 @@ import type { Route } from "./+types/blog";
 import { Link, redirect } from "react-router";
 import { getBlog } from "~/apis/testApi";
 
-
-export function HydrateFallback() {
+/* export function HydrateFallback() {
+  console.log("running blog hydration");
   return <p>Loading blog via hydration...</p>;
-}
+} */
 
 // client loader function
-export async function clientLoader({ params, context }: Route.ClientLoaderArgs) {
+export async function clientLoader({
+  params,
+  context,
+}: Route.ClientLoaderArgs) {
   const blogId = Number(params.blogId);
 
-  console.log("context from the blog client loader", context)
+  await new Promise<void>((resolve) => {
+    setTimeout(resolve, 2000);
+  });
+
+  console.log("context from the blog client loader", context);
 
   if (!Number.isInteger(blogId) || blogId <= 0) {
     throw redirect("/blogs");
