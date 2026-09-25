@@ -21,6 +21,8 @@ export default function Contact({ actionData }: Route.ComponentProps) {
       {actionData?.age ? <p> age {actionData.age} updated</p> : null}
 
       <br />
+      <Link to="/contact2">GO to Contact 2</Link>
+      <br />
       <Link to="/">GO to home</Link>
     </div>
   );

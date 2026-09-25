@@ -17,5 +17,6 @@ export default [
   route("blog/:blogId", "./pages/blogs/blog/blog.tsx"),
   route("blog/:blogId/:commentId", "./pages/blogs/blog/comment/comment.tsx"),
   route("contact", "./pages/contact/contact.tsx"),
+  route("contact2", "./pages/contact/contact2.tsx"),
   
 ] satisfies RouteConfig;

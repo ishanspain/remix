@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 import type { Route } from "./+types/homePage";
 
 export function meta({}: Route.MetaArgs) {
@@ -12,13 +12,17 @@ export default function HomePage() {
   return (
     <main>
       <h1>this is home page</h1>
-      <Link to="/about">Go to About</Link>
-      <br />
-      <Link to="/country">GO to country</Link>
-      <br />
-      <Link to="/blogs">GO to blogs</Link>
-      <br />
-      <Link to="/contact">GO to contact</Link>
+
+      <nav>
+        <NavLink to="/about" end>
+          About
+        </NavLink>
+        <NavLink to="/country" end>
+          Country
+        </NavLink>
+        <NavLink to="/blogs">Blogs</NavLink>
+        <NavLink to="/contact">Contact</NavLink>
+      </nav>
     </main>
   );
 }
